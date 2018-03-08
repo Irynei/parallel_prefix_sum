@@ -100,7 +100,7 @@ def parallel_prefix_sum(input, max_cores):
     total_sum = shared_array[length - 1]
     shared_array[length - 1] = 0
     # second phase - down summator
-    for level in range(int(depth), -1, -1):
+    for level in range(int(depth) - 1, -1, -1):
         # print("Level:", level)
         core_number, processing_field = _get_core_and_processing_field(length, level, max_cores)
         for i in range(core_number):
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     sequential_execution_times = []
     parallel_execution_times = []
     input_list_sizes = []
-    for i in range(15):
+    for i in range(21):
         list_size = 2 ** i
         input_list_sizes.append(i)
 
